@@ -1,6 +1,20 @@
-/* Stylefill.js – https://github.com/nathanford/stylefill
+/* 
 
-This script acts as a bridge between your CSS and your JavaScript, allowing your scripts to read your invented CSS properties and then run whatever function using the assigned selector and property value.
+mm-fontsize.js
+
+This script uses stylfill.js (https://github.com/nathanford/stylefill/) to allow properties to be written in the CSS.
+
+To use the min-font-size or max-font-size propery, just write it in your CSS like any other property:
+
+h1 {
+	font-size: 4vw
+	max-font-size: 50px;
+	min-font-size: 20px;
+} 
+
+Notes: 
+* This is only for when using vw or vh units for font size.
+* Right now, only px is the only unit accepted for min and max-font-size
 
 */
 
