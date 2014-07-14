@@ -40,4 +40,4 @@ A ‘Stylefill’ is a way to create new CSS properties using JavaScript. Stylef
 
 ## Support
 
-KerningPairs.js should work in all modern browsers, and IE9+.
+mm-fontsize.js should work in all modern browsers, and IE9+.
