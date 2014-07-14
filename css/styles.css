@@ -1,0 +1,19 @@
+/* Example CSS - external file */
+
+p {
+	min-font-size: 14px;
+}
+
+p, li, h3, dd {
+	font-size: 2vw;
+	max-width: 32em;
+	min-font-size: 12px;
+}
+
+p {
+	margin: 0;
+}
+
+p + p {
+	text-indent: 1em;
+} 
