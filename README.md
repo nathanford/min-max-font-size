@@ -32,7 +32,7 @@ h1 {
 
 Notes: 
 * This is only for when using vw or vh units for font size.
-* Right now, only px is the only unit accepted for min and max-font-size
+* Right now, `px` is the only unit accepted for min and max-font-size. (Working on ems.)
 
 ## This script is a Stylefill
 
