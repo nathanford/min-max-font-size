@@ -40,4 +40,4 @@ A ‘Stylefill’ is a way to create new CSS properties using JavaScript. Stylef
 
 ## Support
 
-mm-fontsize.js should work in all modern browsers, and IE9+.
+mm-fontsize.js will work in any browser that accepts [vw or vh CSS units](http://caniuse.com/#search=viewport%20units).
