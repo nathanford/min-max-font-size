@@ -105,7 +105,9 @@ var stylefill = {
 		var sheetstext = new Array(),
 				sheets = Array.prototype.slice.call(document.getElementsByTagName('link')); // grab stylesheet links - not used yet
 				
-				sheets.push(Array.prototype.slice.call(document.getElementsByTagName('style'))[0]); // add on page CSS
+				if (Array.prototype.slice.call(document.getElementsByTagName('style')).length != 0) {
+					sheets.unshift(Array.prototype.slice.call(document.getElementsByTagName('style'))); // add on page CSS
+				}
 		
 		sheets.reverse();
 			
