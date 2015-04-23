@@ -112,12 +112,13 @@ var stylefill = {
 		var scount = this.objSize(sheets);
 		
 		while (scount-- > 0) {
-			
+
 			var sheet = sheets[scount];
-			
+
+			if (sheet == undefined || sheet.innerHTML === "") continue;
 			if (sheet.innerHTML) this.findRules(params, sheet.innerHTML, scount);
 			else if (sheet.href.match(document.domain)) this.loadFile(params, sheet.href, scount);
-					
+
 		}
 	
 	},
