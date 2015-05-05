@@ -18,6 +18,8 @@ Notes:
 
 */
 
+var gSheetsCount = 0;
+
 var stylefill = {
 
 	allRules : new Object(),
@@ -81,8 +83,10 @@ var stylefill = {
 	
 	},
 	
-	loadFile : function(params, url, scount) {
-	
+	loadFile : function(params, url) {
+
+		gSheetsCount ++;
+
 	    var req;
 	
 	    if (window.XMLHttpRequest) req = new XMLHttpRequest();
@@ -92,7 +96,10 @@ var stylefill = {
 	
 	    req.onreadystatechange = function() {
 	    	
-	      if (this.readyState == 4 && this.status == 200) stylefill.findRules(params, this.responseText, scount);
+	      if (this.readyState == 4) {
+			  gSheetsCount --;
+			  if(this.status == 200) stylefill.findRules(params, this.responseText);
+		  }
 	      
 	    };
 	    
@@ -112,12 +119,13 @@ var stylefill = {
 		var scount = this.objSize(sheets);
 		
 		while (scount-- > 0) {
-			
+
 			var sheet = sheets[scount];
-			
-			if (sheet.innerHTML) this.findRules(params, sheet.innerHTML, scount);
-			else if (sheet.href.match(document.domain)) this.loadFile(params, sheet.href, scount);
-					
+
+			if (sheet == undefined) continue;
+			if (sheet.innerHTML) {gSheetsCount--; this.findRules(params, sheet.innerHTML);}
+			else if (sheet.href && sheet.href.match(document.domain)) this.loadFile(params, sheet.href);
+
 		}
 	
 	},
@@ -135,7 +143,7 @@ var stylefill = {
 		
 	},
 	
-	findRules : function (params, sheettext, scount) {
+	findRules : function (params, sheettext) {
 		
 		if (sheettext) {
 			
@@ -171,7 +179,7 @@ var stylefill = {
 				
 			}
 			
-			if (scount == 1) this.runFills();
+			if (gSheetsCount == 0) this.runFills();
 			
 		}
 		
